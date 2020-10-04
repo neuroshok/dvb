@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(DVB_ROOT ${CMAKE_SOURCE_DIR})
 
-add_executable(dvb main.cpp)
+add_executable(dvb source/main.cpp)
 
 # third_party
 add_subdirectory(third_party/drogon)

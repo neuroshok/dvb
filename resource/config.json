@@ -1,0 +1,21 @@
+{
+    "document_root": "./",
+    
+    "ssl":
+    {
+        "cert": "/etc/letsencrypt/live/ads.neuroshok.com/fullchain.pem",
+        "key": "/etc/letsencrypt/live/ads.neuroshok.com/fullchain.pem"
+    },
+    "listeners": [
+        {
+          "address": "0.0.0.0",
+          "port": 7999,
+          "https": false
+        },
+        {
+          "address": "0.0.0.0",
+          "port": 8000,
+          "https": true
+        }
+      ]
+}
