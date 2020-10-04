@@ -1,21 +1,20 @@
 {
-    "document_root": "./",
-    
-    "ssl":
-    {
-        "cert": "/etc/letsencrypt/live/ads.neuroshok.com/fullchain.pem",
-        "key": "/etc/letsencrypt/live/ads.neuroshok.com/fullchain.pem"
-    },
+    "document_root": "./app",
+    "run_as_daemon": true,
+    "relaunch_on_error": true,
+
     "listeners": [
         {
           "address": "0.0.0.0",
-          "port": 7999,
+          "port": 4999,
           "https": false
         },
         {
-          "address": "0.0.0.0",
-          "port": 8000,
-          "https": true
+            "address": "0.0.0.0",
+            "port": 5000,
+            "https": true,
+            "cert": "cert.pem",
+            "key": "privkey.pem"
         }
-      ]
+    ]
 }
