@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(DVB_ROOT ${CMAKE_SOURCE_DIR})
 
 # views
-FILE(GLOB SCP_LIST ${CMAKE_CURRENT_SOURCE_DIR}/view/*.csp)
+FILE(GLOB SCP_LIST ${DVB_ROOT}/view/*.csp)
 foreach(cspFile ${SCP_LIST})
     message(STATUS "cspFile:" ${cspFile})
     EXEC_PROGRAM(basename ARGS "-s .csp ${cspFile}" OUTPUT_VARIABLE classname)
@@ -23,5 +23,6 @@ add_executable(dvb source/main.cpp source/controller/search.cpp ${DVB_VIEWS})
 target_include_directories(dvb PUBLIC include)
 
 # third_party
+set(BUILD_EXAMPLES OFF)
 add_subdirectory(third_party/drogon)
 target_link_libraries(dvb PRIVATE drogon)
