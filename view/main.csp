@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+    <head>
+        <title>[[ title ]]</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <nav id="connect-with">
+                <label>Connect with:</label>
+                <a href="/login/github">github</a>
+                <a href="">discord</a>
+            </nav>
+        </header>
+
+        <form id="search" action="/search" method="post">
+            <input type="text">
+            <input type="submit" value="Search">
+        </form>
+
+        <nav id="menu">
+            <section>
+                <h1>Language</h1>
+                <section>
+                    <a href="/search/cpp">cpp</a>
+                </section>
+            </section>
+            <section>
+                <h1>Graphics</h1>
+                <section>
+                    <a href="/search/rendering">rendering</a>
+                    <a href="/search/vulkan">vulkan</a>
+                </section>
+            </section>
+            <section>
+                <h1>Learn</h1>
+                <section>
+                    <a href="/search/course/cpp">Learn cpp</a>
+                    <a href="/search/vulkan">vulkan</a>
+                </section>
+            </section>
+        </nav>
+
+<%c++
+    auto resources=@@.get<std::vector<std::string>>("resources");
+%>
+        <section id="content">
+            <%c++ for(const auto& item : resources) { %>
+                <div>
+                    <h1><%c++ $$ << item %></h1>
+                    <%c++ $$ << item %>
+                </div>
+            <%c++ } %>
+        </section>
+
+        <footer>
+            <a href="github">github</a>
+            <a href="github">contact</a>
+        </footer>
+    </body>
+</html>

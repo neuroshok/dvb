@@ -1,7 +1,10 @@
 {
-    "document_root": "./app",
-    "run_as_daemon": true,
-    "relaunch_on_error": true,
+    "app":
+    {
+        "document_root": "./app",
+        "run_as_daemon": true,
+        "relaunch_on_error": true
+    },
 
     "listeners": [
         {

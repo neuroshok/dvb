@@ -3,10 +3,7 @@
 int main()
 {
     drogon::app().loadConfigFile("config.json");
-    drogon::app()
-    .setDocumentRoot("./app")
-    .enableRunAsDaemon()
-    .run();
+    drogon::app().run();
 
     return 0;
 }
