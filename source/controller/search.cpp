@@ -15,6 +15,6 @@ void search::process(const HttpRequestPtr &req,
     resources.push_back("blablablablablablablablablablablablablablablablablablablablablablablabla");
 
     view_data.insert("resources", resources);
-    auto resp=HttpResponse::newHttpViewResponse("search.csp", view_data);
+    auto resp=HttpResponse::newHttpViewResponse("main.csp", view_data);
     callback(resp);
 }
