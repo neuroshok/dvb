@@ -7,7 +7,3 @@ int main()
 
     return 0;
 }
-
-app/data/style
-app/view/
-app/controller
