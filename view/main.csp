@@ -48,8 +48,8 @@
         <section id="content">
             <%c++ for(const auto& item : resources) { %>
                 <div>
-                    <h1><%c++ $$ << item %></h1>
-                    <%c++ $$ << item %>
+                    <h1><%c++ $$ << item; %></h1>
+                    <%c++ $$ << item; %>
                 </div>
             <%c++ } %>
         </section>
