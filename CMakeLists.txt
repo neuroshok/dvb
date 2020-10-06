@@ -20,6 +20,7 @@ foreach(cspFile ${SCP_LIST})
 endforeach()
 
 add_executable(dvb source/main.cpp source/controller/search.cpp ${DVB_VIEWS})
+add_dependencies(dvb drogon_ctl)
 target_include_directories(dvb PUBLIC include)
 
 # third_party

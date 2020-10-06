@@ -10,7 +10,7 @@ class search : public drogon::HttpController<search>
 public:
     METHOD_LIST_BEGIN
         //use METHOD_ADD to add your custom processing function here;
-        METHOD_ADD(search::process,"/{1}", Post);
+        METHOD_ADD(search::process,"/{1}", Get);
     METHOD_LIST_END
     //your declaration of processing function maybe like this:
     void process(const HttpRequestPtr &req,
