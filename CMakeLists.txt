@@ -16,10 +16,10 @@ foreach(cspFile ${SCP_LIST})
         ARGS create view ${cspFile}
         DEPENDS ${cspFile}
         VERBATIM )
-   set(VIEWSRC ${VIEWSRC} ${classname}.cc)
+   set(DVB_VIEWS ${DVB_VIEWS} ${classname}.cc)
 endforeach()
 
-add_executable(dvb source/main.cpp source/controller/search.cpp ${VIEWSRC})
+add_executable(dvb source/main.cpp source/controller/search.cpp ${DVB_VIEWS})
 
 # third_party
 add_subdirectory(third_party/drogon)
