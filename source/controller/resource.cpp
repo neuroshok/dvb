@@ -1,6 +1,6 @@
 #include <controller/resource.hpp>
 
-void resource::add(dvb::resource_data&&, std::function<void(const drogon::HttpResponsePtr &)>&&) const
+void resource::add(dvb::resource_data&&, std::function<void(const drogon::HttpResponsePtr &)>&& callback) const
 {
     drogon::HttpViewData view_data;
 
