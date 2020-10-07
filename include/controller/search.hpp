@@ -14,7 +14,7 @@ public:
                 std::function<void (const drogon::HttpResponsePtr &)> &&callback,
                 const std::string& input);
 
-    void view_add(const drogon::HttpRequestPtr&, std::function<void (const drogon::HttpResponsePtr&)>&&) const
+    void view_add(const drogon::HttpRequestPtr&, std::function<void (const drogon::HttpResponsePtr&)>&& callback) const
     {
             drogon::HttpViewData view_data;
 
