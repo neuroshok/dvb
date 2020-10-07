@@ -1,12 +1,10 @@
 #include <controller/search.hpp>
 
-void search::process(const HttpRequestPtr &req,
-           std::function<void (const HttpResponsePtr &)> &&callback,
+void search::process(const drogon::HttpRequestPtr &req,
+           std::function<void (const drogon::HttpResponsePtr &)> &&callback,
            const std::string& input)
 {
-    LOG_DEBUG<<"search "<<input;
-
-    HttpViewData view_data;
+    drogon::HttpViewData view_data;
 
     std::vector<std::string> resources;
     view_data.insert("title", input);
@@ -15,6 +13,6 @@ void search::process(const HttpRequestPtr &req,
     resources.push_back(input);
 
     view_data.insert("resources", resources);
-    auto resp=HttpResponse::newHttpViewResponse("main.csp", view_data);
+    auto resp= drogon::HttpResponse::newHttpViewResponse("main.csp", view_data);
     callback(resp);
 }
