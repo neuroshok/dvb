@@ -14,7 +14,7 @@ public:
         METHOD_ADD(resource::add,"/", Post);
     METHOD_LIST_END
 
-    void add(dvb::resource_data&&, std::function<void(const HttpResponsePtr &)>&&) const;
+    void add(dvb::resource_data&&, std::function<void(const drogon::HttpResponsePtr &)>&&) const;
 
 namespace drogon
 {
