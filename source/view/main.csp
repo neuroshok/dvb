@@ -2,7 +2,7 @@
     <%view menu %>
 
     <%c++
-        auto resources=@@.get<std::vector<std::string>>("resources");
+        auto resources = @@.get<std::vector<dvb::resource_data>>("resources");
     %>
     <section id="content">
         <%c++ for(const auto& resource : resources) { %>

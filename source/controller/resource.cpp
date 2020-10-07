@@ -1,11 +1,11 @@
 #include <controller/resource.hpp>
 #include <dvb/resource_data.hpp>
 
-void resource::add(dvb::resource_data&&, std::function<void(const drogon::HttpResponsePtr &)>&& callback) const
+void resource::add(dvb::resource_data&& resource_data, std::function<void(const drogon::HttpResponsePtr &)>&& callback) const
 {
     drogon::HttpViewData view_data;
 
-    std::vector<std::string> resources;
+    std::vector<dvb::resource_data> resources{ std::move(resource_data) };
     view_data.insert("resources", resources);
     auto resp = drogon::HttpResponse::newHttpViewResponse("resource_add.csp", view_data);
     callback(resp);
