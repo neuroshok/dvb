@@ -1,3 +1,5 @@
+<%inc #include <dvb/resource_data.hpp> %>
+
 <%view header %>
     <%view menu %>
 
