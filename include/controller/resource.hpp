@@ -16,20 +16,3 @@ public:
 
     void add(dvb::resource_data&&, std::function<void(const drogon::HttpResponsePtr &)>&&) const;
 };
-
-namespace drogon
-{
-    template <>
-    inline dvb::resource_data fromRequest(const HttpRequest& req)
-    {
-        auto json = req.getJsonObject();
-        dvb::resource_data data;
-        if(json)
-        {
-            data.name = (*json)["name"].asString();
-            data.type = (*json)["type"].asString();
-            data.data = (*json)["data"].asString();
-        }
-        return data;
-    }
-};
