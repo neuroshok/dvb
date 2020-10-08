@@ -6,13 +6,11 @@ class search : public drogon::HttpController<search>
 {
 public:
     METHOD_LIST_BEGIN
+        ADD_METHOD_TO(search::process,"/search/{1}", drogon::Get);
         METHOD_ADD(search::process,"/?s={1}", drogon::Get);
-        METHOD_ADD(search::process,"/{1}", drogon::Get);
     METHOD_LIST_END
 
-    void process(const drogon::HttpRequestPtr &req,
-                std::function<void (const drogon::HttpResponsePtr &)> &&callback,
-                const std::string& input);
-
-                
+    void process(const drogon::HttpRequestPtr&,
+                std::function<void (const drogon::HttpResponsePtr &)>&&,
+                const std::string& input);          
 };

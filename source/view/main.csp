@@ -1,17 +1,6 @@
-<%inc #include <dvb/resource_data.hpp> %>
-
 <%view header %>
     <%view menu %>
 
-    <%c++
-        auto resources = @@.get<std::vector<dvb::resource_data>>("resources");
-    %>
-    
-    <%c++ for(const auto& resource : resources) { %>
-        <div>
-            <h1>{% resource.name %}</h1>
-            {% resource.data %}
-        </div>
-    <%c++ } %>
+    <h1>News</h1>
 
 <%view footer %>
