@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(DVB_ROOT ${CMAKE_SOURCE_DIR})
 
 # views
-file(MAKE_DIRECTORY view)
+file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/view)
 FILE(GLOB SCP_LIST ${DVB_ROOT}/source/view/*.csp)
 foreach(csp_file ${SCP_LIST})
     message(STATUS "csp_file:" ${csp_file})
@@ -18,7 +18,7 @@ foreach(csp_file ${SCP_LIST})
         WORKING_DIRECTORY view
         DEPENDS ${csp_file}
         VERBATIM)
-        WORKING_DIRECTORY view
+
     set(DVB_VIEWS ${DVB_VIEWS} view/${classname}.cc)
 endforeach()
 
