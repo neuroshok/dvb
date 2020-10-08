@@ -6,13 +6,12 @@
     <%c++
         auto resources = @@.get<std::vector<dvb::resource_data>>("resources");
     %>
-    <section id="content">
-        <%c++ for(const auto& resource : resources) { %>
-            <div>
-                <h1>{% resource.name %}</h1>
-                {% resource.data %}
-            </div>
-        <%c++ } %>
-    </section>
+    
+    <%c++ for(const auto& resource : resources) { %>
+        <div>
+            <h1>{% resource.name %}</h1>
+            {% resource.data %}
+        </div>
+    <%c++ } %>
 
 <%view footer %>

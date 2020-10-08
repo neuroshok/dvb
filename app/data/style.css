@@ -2,18 +2,44 @@
 {
     border: none;
     margin: 0;
-    padding:0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input, textarea
+{
+    border: 1px solid #CCCCCC;
+    padding: 2px;
+    border-radius: 2px;
+}
+
+input[type="submit"]
+{
+    border: none;
+    padding: 6px 10px 6px;
+    border-radius: 4px;
+    background-color: #CCCCCC;
+    width: 100px;
+}
+
+a 
+{
+    color: #000000;
+    text-decoration: none;
 }
 
 #connect-with
 {
     height: 24px;
-    background-color: #999999;
+    line-height: 24px;
+    background-color: #000000;
+    color: #AAAAAA;
     text-align: right;
+    padding-right: 12px;
 }
 #connect-with a
 {
-    display: inline;
+    color: #AAAAAA;
 }
 
 header
@@ -25,7 +51,7 @@ header
 
 #search
 {
-    display: block;
+    position: relative;
 
     margin-left: auto;
     margin-right: auto;
@@ -45,32 +71,55 @@ header
     border: 1px solid #888888;
     border-radius: 2px;
     margin-bottom: 5px;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#search input[type="submit"]
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#middle
+{
+    display:flex;
 }
 
 #menu
 {
-    display: inline-block;
-    background-color: #9f95ac;
-    width: 15%;
+    display: flex;
+    flex-direction: column;
+    background-color: #DDDDDD;
+    flex-grow: 1;
 }
 
 #menu h1
 {
-    background-color: blue;
+    background-color: #225599;
+    padding: 4px 8px 4px 8px;
+    color: #EEEEEE;
 }
 
 #menu a
 {
+    height: 32px;
+    line-height: 32px;
     display: block;
+    padding-left: 8px;
+}
+#menu a:hover
+{
+    background-color: #999999;
 }
 
 #content
 {
-    display: inline-block;
-    vertical-align: top;
-    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 8;
+    padding: 4px;
 }
 
 #content div
@@ -83,8 +132,27 @@ header
     background-color: blue;
 }
 
+#resource_add label
+{
+    display: block;
+    width: 120px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+#resource_add input[type="text"], #resource_add textarea
+{
+    width: 50%;
+    margin-bottom: 4px;
+}
+
 footer
 {
     margin-top: 10px;
     background-color: #000000;
+    color: #AAAAAA;
+    padding: 12px;
+}
+footer a
+{
+    color: #AAAAAA;
 }

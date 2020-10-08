@@ -2,10 +2,10 @@
     <%view menu %>
 
     <form id="resource_add" action="/resource/add" method="post">
-        <label>Name : </label><input id="name" type="text">
-        <label>Type : </label><input id="type" type="text">
-        <label>Data : </label><textarea id="data">zeta</textarea>
-        <input type="submit" value="Add">
+        <label>Name</label><input id="name" type="text">
+        <label>Type</label><input id="type" type="text">
+        <label>Data</label><textarea id="data"></textarea>
+        <br><input type="submit" value="Add">
     </form>
     <div>[[ status ]]</div>
 

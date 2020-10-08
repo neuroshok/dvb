@@ -1,22 +1,25 @@
-<nav id="menu">
-    <section>
-        <h1>Language</h1>
+<div id="middle">
+    <nav id="menu">
         <section>
-            <a href="/search/cpp">cpp</a>
+            <h1>Language</h1>
+            <section>
+                <a href="/search/cpp">cpp</a>
+            </section>
         </section>
-    </section>
-    <section>
-        <h1>Graphics</h1>
         <section>
-            <a href="/search/rendering">rendering</a>
-            <a href="/search/vulkan">vulkan</a>
+            <h1>Graphics</h1>
+            <section>
+                <a href="/search/rendering">rendering</a>
+                <a href="/search/vulkan">vulkan</a>
+            </section>
         </section>
-    </section>
-    <section>
-        <h1>Learn</h1>
         <section>
-            <a href="/search/course/cpp">Learn cpp</a>
-            <a href="/search/vulkan">vulkan</a>
+            <h1>Learn</h1>
+            <section>
+                <a href="/search/course/cpp">Learn cpp</a>
+                <a href="/search/vulkan">vulkan</a>
+            </section>
         </section>
-    </section>
-</nav>
+    </nav>
+
+    <section id="content">
