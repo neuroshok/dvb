@@ -15,6 +15,6 @@
         </header>
 
         <form id="search" action="/search/" method="get">
-            <input type="text" value = "[[ search_input ]]">
+            <input id="s" type="text" value = "[[ search_input ]]">
             <input type="submit" value="Search">
         </form>

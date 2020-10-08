@@ -14,6 +14,6 @@ void search::process(const drogon::HttpRequestPtr &req,
     resources.push_back(input);
 
     view_data.insert("resources", resources);
-    auto resp= drogon::HttpResponse::newHttpViewResponse("main.csp", view_data);
+    auto resp= drogon::HttpResponse::newHttpViewResponse("search.csp", view_data);
     callback(resp);
 }

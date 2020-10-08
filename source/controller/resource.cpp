@@ -14,9 +14,8 @@ void resource::add(dvb::resource_data&& resource_data, std::function<void(const 
 {
     drogon::HttpViewData view_data;
 
-    std::vector<dvb::resource_data> resources{ std::move(resource_data) };
     view_data.insert("title", "Add a new resource");
-    view_data.insert("status", "Resource has been added");
+    view_data.insert("status", "Resource ' " + resource_data.name + " ' has been added");
     auto resp = drogon::HttpResponse::newHttpViewResponse("resource_add.csp", view_data);
     callback(resp);
 }
