@@ -52,7 +52,7 @@ add_custom_command(
     TARGET dvb POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${DVB_ROOT}/resource ${DVB_OUTPUT}/resource
-    COMMENT "Copy ${DVB_ROOT}/resource to ${DVB_OUTPUT}")
+    COMMENT "Copy ${DVB_ROOT}/resource to ${DVB_OUTPUT}/resource")
 
     # restart
     add_custom_command(
