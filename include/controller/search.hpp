@@ -13,3 +13,4 @@ public:
     void process(const drogon::HttpRequestPtr&,
                 std::function<void (const drogon::HttpResponsePtr &)>&&,
                 const std::string& input);   
+};
