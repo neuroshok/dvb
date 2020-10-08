@@ -13,18 +13,8 @@ public:
     METHOD_LIST_BEGIN
         METHOD_ADD(resource::view_add,"/add", drogon::Get);
         METHOD_ADD(resource::add,"/add", drogon::Post);
-        ADD_METHOD_TO(resource::test,"/test/", drogon::Get);
     METHOD_LIST_END
 
     void view_add(const drogon::HttpRequestPtr&, std::function<void (const drogon::HttpResponsePtr&)>&&) const;
     void add(dvb::resource_data&&, std::function<void(const drogon::HttpResponsePtr&)>&&) const;
-
-    void test(const drogon::HttpRequestPtr&, std::function<void (const drogon::HttpResponsePtr&)>&& callback) const
-    {
-        drogon::HttpViewData view_data;
-
-        view_data.insert("title", "test");
-        auto resp = drogon::HttpResponse::newHttpViewResponse("resource_add.csp", view_data);
-        callback(resp);
-    }
 };
