@@ -1,4 +1,4 @@
-#include <controller/search.hpp>
+#include <controller/master.hpp>
 
 void master::home(const drogon::HttpRequestPtr& req,
            std::function<void(const drogon::HttpResponsePtr&)>&& callback)
