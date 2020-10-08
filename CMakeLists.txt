@@ -57,7 +57,7 @@ add_custom_command(
     # restart
     add_custom_command(
         TARGET dvb POST_BUILD
-        pkill dvb
-        ./dvb
+        COMMAND pkill dvb
+        COMMAND ./dvb
         WORKING_DIRECTORY ${DVB_OUTPUT}
         COMMENT "Restart dvb")
