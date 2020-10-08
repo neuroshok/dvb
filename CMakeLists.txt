@@ -6,17 +6,19 @@ set(CMAKE_CXX_STANDARD 17)
 set(DVB_ROOT ${CMAKE_SOURCE_DIR})
 
 # views
+add_custom_target(dvb ALL COMMAND ${CMAKE_COMMAND} -E make_directory view)
 FILE(GLOB SCP_LIST ${DVB_ROOT}/source/view/*.csp)
 foreach(csp_file ${SCP_LIST})
     message(STATUS "csp_file:" ${csp_file})
     EXEC_PROGRAM(basename ARGS "-s .csp ${csp_file}" OUTPUT_VARIABLE classname)
-    message(STATUS "view classname:" view_${classname})
-    add_custom_command(OUTPUT view_${classname}.h view_${classname}.cc
+    message(STATUS "view classname:" ${classname})
+    add_custom_command(OUTPUT ${classname}.h ${classname}.cc
         COMMAND drogon_ctl
         ARGS create view ${csp_file}
+        WORKING_DIRECTORY view
         DEPENDS ${csp_file}
         VERBATIM)
-   set(DVB_VIEWS ${DVB_VIEWS} view_${classname}.cc)
+   set(DVB_VIEWS ${DVB_VIEWS} ${classname}.cc)
 endforeach()
 
 file(GLOB_RECURSE DVB_SOURCES
