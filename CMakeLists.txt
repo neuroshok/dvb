@@ -44,15 +44,15 @@ target_link_libraries(dvb PRIVATE drogon)
 add_custom_command(
     TARGET dvb POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${DVB_ROOT}/app ${DVB_OUTPUT}/
-    COMMENT "Copy ${DVB_ROOT}/app to ${DVB_OUTPUT}")
+    ${DVB_ROOT}/app ${DVB_OUTPUT}/app
+    COMMENT "Copy ${DVB_ROOT}/app to ${DVB_OUTPUT}/app")
 
 # copy server resources
 add_custom_command(
     TARGET dvb POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${DVB_ROOT}/resource ${DVB_OUTPUT}/resource
-    COMMENT "Copy ${DVB_ROOT}/resource to ${DVB_OUTPUT}/resource")
+    COMMENT "Copy ${DVB_ROOT}/resource to ${DVB_OUTPUT}")
 
     # restart
     add_custom_command(
