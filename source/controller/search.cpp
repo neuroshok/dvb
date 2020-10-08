@@ -17,3 +17,14 @@ void search::process(const drogon::HttpRequestPtr &req,
     auto resp= drogon::HttpResponse::newHttpViewResponse("search.csp", view_data);
     callback(resp);
 }
+
+void search::process2(const drogon::HttpRequestPtr &req,
+           std::function<void (const drogon::HttpResponsePtr &)> &&callback)
+{
+    drogon::HttpViewData view_data;
+
+    view_data.insert("title", "process");
+
+    auto resp= drogon::HttpResponse::newHttpViewResponse("search.csp", view_data);
+    callback(resp);
+}
