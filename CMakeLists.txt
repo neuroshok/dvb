@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(DVB_ROOT ${CMAKE_SOURCE_DIR})
 
 # views
-add_custom_command(TARGET dvb PRE_BUILDLL COMMAND ${CMAKE_COMMAND} -E make_directory view)
+add_custom_command(TARGET dvb PRE_BUILD COMMAND ${CMAKE_COMMAND} -E make_directory view)
 FILE(GLOB SCP_LIST ${DVB_ROOT}/source/view/*.csp)
 foreach(csp_file ${SCP_LIST})
     message(STATUS "csp_file:" ${csp_file})
