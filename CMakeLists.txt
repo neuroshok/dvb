@@ -18,7 +18,8 @@ foreach(csp_file ${SCP_LIST})
         WORKING_DIRECTORY view
         DEPENDS ${csp_file}
         VERBATIM)
-   set(DVB_VIEWS ${DVB_VIEWS} ${classname}.cc)
+        WORKING_DIRECTORY view
+    set(DVB_VIEWS ${DVB_VIEWS} view/${classname}.cc)
 endforeach()
 
 file(GLOB_RECURSE DVB_SOURCES
