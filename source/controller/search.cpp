@@ -1,6 +1,5 @@
 #include <controller/search.hpp>
 
-#include <drogon/orm/DbClient.h>
 #include <dvb/resource_data.hpp>
 
 namespace web
@@ -33,7 +32,7 @@ namespace web
                 auto resp = drogon::HttpResponse::newHttpViewResponse("views::search", view_data);
                 callback(resp);
             },
-            [](const DrogonDbException &e) {
+            [](const drogon::DrogonDbException& e) {
 
             },
             input);
