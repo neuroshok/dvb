@@ -8,8 +8,8 @@ namespace web
     {
     public:
         METHOD_LIST_BEGIN
-            METHOD_ADD(search::process,"/?s={1}", drogon::Get);
-            METHOD_ADD(search::process,"/{1}", drogon::Get);
+            ADD_METHOD_TO(search::process,"/search/?s={1}", drogon::Get);
+            ADD_METHOD_TO(search::process,"/search/{1}", drogon::Get);
         METHOD_LIST_END
 
         void process(const drogon::HttpRequestPtr&,
