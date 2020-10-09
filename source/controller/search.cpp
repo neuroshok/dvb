@@ -1,5 +1,6 @@
 #include <controller/search.hpp>
 
+#include <drogon/orm/DbClient.h>
 #include <dvb/resource_data.hpp>
 
 namespace web
@@ -8,7 +9,7 @@ namespace web
             std::function<void(const drogon::HttpResponsePtr&)>&& callback,
             const std::string& input)
     {
-        drogon::app().getDbClient()->clientPtr->execSqlAsync(
+        drogon::app().getDbClient()->execSqlAsync(
             "select name, data from resource where name like '%$1%",
             [callback, input](const drogon::Result& result)
             {
