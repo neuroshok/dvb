@@ -1,4 +1,6 @@
 #include <controller/resource.hpp>
+
+#include <drogon/orm/DbClient.h>
 #include <dvb/resource_data.hpp>
 
 namespace web
