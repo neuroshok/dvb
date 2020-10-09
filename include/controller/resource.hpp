@@ -24,6 +24,6 @@ namespace web
 
 namespace drogon
 {
-    template <>
-    inline dvb::resource_data fromRequest(const HttpRequest&);
+    //template <>
+    //inline dvb::resource_data fromRequest(const HttpRequest&);
 } // drogon

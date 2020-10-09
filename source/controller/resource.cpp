@@ -28,15 +28,12 @@ namespace drogon
     template <>
     inline dvb::resource_data fromRequest(const HttpRequest& req)
     {
-        auto json = req.getJsonObject();
+        auto input = req.getParameters();
         dvb::resource_data data;
-        data.name = "test";
-        if(json)
-        {
-            data.name = (*json)["name"].asString();
-            data.type = (*json)["type"].asString();
-            data.data = (*json)["data"].asString();
-        }
+        data.name = input["name"];
+        data.type = input["type"];
+        data.data = input["data"];
+
         return data;
     }
 } // drogon
