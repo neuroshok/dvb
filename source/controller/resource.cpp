@@ -17,7 +17,7 @@ namespace web
     {
         drogon::HttpViewData view_data;
 
-        drogon::app().getDbClient()->clientPtr()->execSqlSync(
+        drogon::app().getDbClient()->execSqlSync(
             "insert into resource(name, data) VALUES($1, $2)", resource_data.name, resource_data.data);
 
         view_data.insert("title", "Add a new resource");

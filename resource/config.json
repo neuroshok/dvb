@@ -23,7 +23,7 @@
 
     "db_clients":[
         {
-          "name":"dvb",
+          "name":"default",
           "rdbms": "postgresql",
           "host": "127.0.0.1",
           "port": 5432,
