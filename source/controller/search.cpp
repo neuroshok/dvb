@@ -1,9 +1,10 @@
 #include <controller/search.hpp>
 #include <dvb/resource_data.hpp>
 
-
-    void search::process(const drogon::HttpRequestPtr &req,
-            std::function<void (const drogon::HttpResponsePtr &)> &&callback,
+namespace web
+{
+    void search::process(const drogon::HttpRequestPtr& req,
+            std::function<void(const drogon::HttpResponsePtr&)>&& callback,
             const std::string& input)
     {
         drogon::HttpViewData view_data;
@@ -16,6 +17,7 @@
         resources.emplace_back(dvb::resource_data{ "title_test2222222222222", "type", "data" });
 
         view_data.insert("resources", resources);
-        auto resp= drogon::HttpResponse::newHttpViewResponse("search.csp", view_data);
+        auto resp = drogon::HttpResponse::newHttpViewResponse("views::search", view_data);
         callback(resp);
     }
+} // web
