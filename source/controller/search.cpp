@@ -10,9 +10,11 @@ namespace web
             std::function<void(const drogon::HttpResponsePtr&)>&& callback,
             const std::string& input)
     {
+        using namespace drogon::orm;
+
         drogon::app().getDbClient()->execSqlAsync(
             "select name, data from resource where name like '%$1%",
-            [callback, input](const drogon::Result& result)
+            [callback, input](const Result& result)
             {
                 std::vector<dvb::resource_data> resources;
                 resources.emplace_back(dvb::resource_data{ input, "type", "data" });
@@ -34,17 +36,9 @@ namespace web
                 auto resp = drogon::HttpResponse::newHttpViewResponse("views::search", view_data);
                 callback(resp);
             },
-            [](const drogon::DrogonDbException& e) {
+            [](const DrogonDbException& e) {
 
             },
             input);
-
-
-        drogon::HttpViewData view_data;
-
-        std::vector<dvb::resource_data> resources;
-
-        auto resp = drogon::HttpResponse::newHttpViewResponse("views::search", view_data);
-        callback(resp);
     }
 } // web
