@@ -12,10 +12,11 @@ foreach(csp_file ${SCP_LIST})
     message(STATUS "csp_file:" ${csp_file})
     EXEC_PROGRAM(basename ARGS "-s .csp ${csp_file}" OUTPUT_VARIABLE classname)
     message(STATUS "view classname:" ${classname})
-    add_custom_command(OUTPUT generated/view${classname}.h generated/view/${classname}.cc
+    add_custom_command(OUTPUT ${DVB_ROOT}/generated/view/${classname}.h ${DVB_ROOT}/generated/view/${classname}.cc
         COMMAND drogon_ctl
         ARGS create view ${csp_file}
         DEPENDS ${csp_file}
+        WORKING_DIRECTORY ${DVB_ROOT}/generated/view
         VERBATIM)
 
     set(DVB_VIEWS ${DVB_VIEWS} ${DVB_ROOT}/generated/view/${classname}.cc)
