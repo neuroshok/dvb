@@ -30,6 +30,7 @@ namespace drogon
     {
         auto json = req.getJsonObject();
         dvb::resource_data data;
+        data.name = "test";
         if(json)
         {
             data.name = (*json)["name"].asString();
