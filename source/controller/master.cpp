@@ -10,7 +10,7 @@ namespace web
         std::vector<std::string> resources;
         view_data.insert("title", "Home");
 
-        auto resp = drogon::HttpResponse::newHttpViewResponse("main.csp", view_data);
+        auto resp = drogon::HttpResponse::newHttpViewResponse("views::main", view_data);
         callback(resp);
     }
 } // web
