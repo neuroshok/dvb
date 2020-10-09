@@ -7,7 +7,7 @@ int main()
 
     auto clientPtr = drogon::app().getDbClient();
 
-    constexpr auto resource_table = R"(
+    constexpr auto create_table_resource = R"(
 CREATE TABLE resource (
     id serial primary key,
     name varchar(255),
