@@ -2,8 +2,7 @@
 
 #include <drogon/HttpController.h>
 
-namespace web
-{
+
     class search : public drogon::HttpController<search>
     {
     public:
@@ -16,4 +15,3 @@ namespace web
                     std::function<void (const drogon::HttpResponsePtr &)>&&,
                     const std::string& input);   
     };
-} // web

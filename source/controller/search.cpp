@@ -1,8 +1,7 @@
 #include <controller/search.hpp>
 #include <dvb/resource_data.hpp>
 
-namespace web
-{
+
     void search::process(const drogon::HttpRequestPtr &req,
             std::function<void (const drogon::HttpResponsePtr &)> &&callback,
             const std::string& input)
@@ -20,4 +19,3 @@ namespace web
         auto resp= drogon::HttpResponse::newHttpViewResponse("search.csp", view_data);
         callback(resp);
     }
-} // web

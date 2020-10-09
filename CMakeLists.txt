@@ -14,7 +14,7 @@ foreach(csp_file ${SCP_LIST})
     message(STATUS "view classname:" ${classname})
     add_custom_command(OUTPUT ${DVB_ROOT}/generated/view/${classname}.h ${DVB_ROOT}/generated/view/${classname}.cc
         COMMAND drogon_ctl
-        ARGS create view ${csp_file}
+        ARGS create view ${csp_file} -n views
         DEPENDS ${csp_file}
         WORKING_DIRECTORY ${DVB_ROOT}/generated/view
         VERBATIM)
