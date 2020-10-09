@@ -1,6 +1,5 @@
 #include <controller/resource.hpp>
 
-#include <drogon/orm/DbClient.h>
 #include <dvb/resource_data.hpp>
 
 namespace web
@@ -18,7 +17,7 @@ namespace web
     {
         drogon::HttpViewData view_data;
 
-        drogon::app().getDbClient()->clientPtr->execSqlSync(
+        drogon::app().getDbClient()->clientPtr()->execSqlSync(
             "insert into resource(name, data) VALUES($1, $2)", resource_data.name, resource_data.data);
 
         view_data.insert("title", "Add a new resource");
