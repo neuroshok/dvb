@@ -1,6 +1,7 @@
 #include <controller/search.hpp>
 
 #include <drogon/orm/DbClient.h>
+#include <drogon/orm/Result.h>
 #include <dvb/resource_data.hpp>
 
 namespace web
