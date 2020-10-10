@@ -5,10 +5,14 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(DVB_ROOT ${CMAKE_SOURCE_DIR})
 
+# third_party
+set(BUILD_EXAMPLES OFF)
+add_subdirectory(third_party/drogon)
+target_link_libraries(dvb PRIVATE drogon)
+
 # views
 file(MAKE_DIRECTORY ${DVB_ROOT}/generated/view)
 file(GLOB SCP_LIST ${DVB_ROOT}/source/view/*.csp)
-
 
 file(GLOB_RECURSE SCP_LIST ${CMAKE_CURRENT_SOURCE_DIR}/views/*.csp)
 foreach(cspFile ${SCP_LIST})
@@ -45,11 +49,6 @@ endif()
 set_target_properties(dvb PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${DVB_OUTPUT}
 )
-
-# third_party
-set(BUILD_EXAMPLES OFF)
-add_subdirectory(third_party/drogon)
-target_link_libraries(dvb PRIVATE drogon)
 
 # copy app data
 add_custom_command(
