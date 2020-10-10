@@ -7,20 +7,28 @@ set(DVB_ROOT ${CMAKE_SOURCE_DIR})
 
 # views
 file(MAKE_DIRECTORY ${DVB_ROOT}/generated/view)
-FILE(GLOB SCP_LIST ${DVB_ROOT}/source/view/*.csp)
-foreach(csp_file ${SCP_LIST})
-    message(STATUS "csp_file:" ${csp_file})
-    EXEC_PROGRAM(basename ARGS "-s .csp ${csp_file}" OUTPUT_VARIABLE classname)
-    message(STATUS "view classname:" ${classname})
-    add_custom_command(OUTPUT ${DVB_ROOT}/generated/view/${classname}.h ${DVB_ROOT}/generated/view/${classname}.cc
-        COMMAND drogon_ctl
-        ARGS create view ${csp_file} -n views
-        DEPENDS ${csp_file}
-        WORKING_DIRECTORY ${DVB_ROOT}/generated/view
-        VERBATIM)
+file(GLOB SCP_LIST ${DVB_ROOT}/source/view/*.csp)
 
-    set(DVB_VIEWS ${DVB_VIEWS} ${DVB_ROOT}/generated/view/${classname}.cc)
+
+file(GLOB_RECURSE SCP_LIST ${CMAKE_CURRENT_SOURCE_DIR}/views/*.csp)
+foreach(cspFile ${SCP_LIST})
+  message(STATUS "cspFile:" ${cspFile})
+   drogon_create_view(${cspFile} DVB_VIEWS TRUE)
 endforeach()
+
+#foreach(csp_file ${SCP_LIST})
+#    message(STATUS "csp_file:" ${csp_file})
+#    EXEC_PROGRAM(basename ARGS "-s .csp ${csp_file}" OUTPUT_VARIABLE classname)
+#    message(STATUS "view classname:" ${classname})
+#    add_custom_command(OUTPUT ${DVB_ROOT}/generated/view/${classname}.h ${DVB_ROOT}/generated/view/${classname}.cc
+#        COMMAND drogon_ctl
+#        ARGS create view ${csp_file} -n views
+#        DEPENDS ${csp_file}
+#        WORKING_DIRECTORY ${DVB_ROOT}/generated/view
+#        VERBATIM)
+#
+#    set(DVB_VIEWS ${DVB_VIEWS} ${DVB_ROOT}/generated/view/${classname}.cc)
+#endforeach()
 
 file(GLOB_RECURSE DVB_SOURCES
         "source/*.cpp"
@@ -57,10 +65,10 @@ add_custom_command(
     ${DVB_ROOT}/resource ${DVB_OUTPUT}/resource
     COMMENT "Copy ${DVB_ROOT}/resource to ${DVB_OUTPUT}/resource")
 
-    # restart
+    # restart // make custom target
     add_custom_command(
         TARGET dvb POST_BUILD
-        COMMAND pkill dvb
-        COMMAND ./dvb
+        #COMMAND pkill dvb
+        #COMMAND ./dvb
         WORKING_DIRECTORY ${DVB_OUTPUT}
         COMMENT "Restart dvb")
