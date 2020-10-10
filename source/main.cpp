@@ -5,7 +5,7 @@ int main()
 {
     drogon::app().loadConfigFile("resource/config.json");
 
-    auto clientPtr = drogon::app().getDbClient();
+    auto db = newPgClient("default", 1);
 
     constexpr auto create_table_resource = R"(
 CREATE TABLE resource (
@@ -15,7 +15,7 @@ CREATE TABLE resource (
 );
     )";
 
-    clientPtr->execSqlSync(create_table_resource);
+    db->execSqlSync(create_table_resource);
 
     drogon::app().run();
 
