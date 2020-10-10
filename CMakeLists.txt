@@ -8,7 +8,6 @@ set(DVB_ROOT ${CMAKE_SOURCE_DIR})
 # third_party
 set(BUILD_EXAMPLES OFF)
 add_subdirectory(third_party/drogon)
-target_link_libraries(dvb PRIVATE drogon)
 
 # views
 file(MAKE_DIRECTORY ${DVB_ROOT}/generated/view)
@@ -41,6 +40,7 @@ file(GLOB_RECURSE DVB_SOURCES
 add_executable(dvb ${DVB_SOURCES} ${DVB_VIEWS})
 add_dependencies(dvb drogon_ctl)
 target_include_directories(dvb PUBLIC include)
+target_link_libraries(dvb PRIVATE drogon)
 
 if (NOT DVB_OUTPUT)
     set(DVB_OUTPUT ${CMAKE_BINARY_DIR}/${DVB_OUTPUT})
