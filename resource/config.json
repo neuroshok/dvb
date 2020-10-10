@@ -2,7 +2,7 @@
     "app":
     {
         "document_root": "./app",
-        "run_as_daemon": true,
+        "run_as_daemon": false,
         "relaunch_on_error": true
     },
 
@@ -23,7 +23,7 @@
 
     "db_clients":[
         {
-          "name":"default",
+          "name":"",
           "rdbms": "postgresql",
           "host": "127.0.0.1",
           "port": 5432,
