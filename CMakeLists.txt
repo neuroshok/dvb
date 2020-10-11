@@ -5,34 +5,18 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(DVB_ROOT ${CMAKE_SOURCE_DIR})
 
-# views
-file(MAKE_DIRECTORY ${DVB_ROOT}/generated/view)
-file(GLOB SCP_LIST ${DVB_ROOT}/source/view/*.csp)
-
-
-
-
-foreach(csp_file ${SCP_LIST})
-    message(STATUS "csp_file:" ${csp_file})
-    EXEC_PROGRAM(basename ARGS "-s .csp ${csp_file}" OUTPUT_VARIABLE classname)
-    message(STATUS "view classname:" ${classname})
-    add_custom_command(OUTPUT ${DVB_ROOT}/generated/view/${classname}.h ${DVB_ROOT}/generated/view/${classname}.cc
-        COMMAND drogon_ctl
-        ARGS create view ${csp_file} --path-to-namespace ${DVB_ROOT}/source/view
-        DEPENDS ${csp_file}
-        WORKING_DIRECTORY ${DVB_ROOT}/generated/view
-        VERBATIM)
-
-    set(DVB_VIEWS ${DVB_VIEWS} ${DVB_ROOT}/generated/view/${classname}.cc)
-endforeach()
-
 file(GLOB_RECURSE DVB_SOURCES
         "source/*.cpp"
         "include/*.hpp")
 
-add_executable(dvb ${DVB_SOURCES} ${DVB_VIEWS})
+add_executable(dvb ${DVB_SOURCES})
 add_dependencies(dvb drogon_ctl)
 target_include_directories(dvb PUBLIC include)
+
+add_subdirectory(third_party/drogon)
+target_link_libraries(dvb PRIVATE drogon)
+
+drogon_create_views(dvb ${DVB_ROOT}/source/view/ ${DVB_ROOT}/generated/view true)
 
 if (NOT DVB_OUTPUT)
     set(DVB_OUTPUT ${CMAKE_BINARY_DIR}/${DVB_OUTPUT})
