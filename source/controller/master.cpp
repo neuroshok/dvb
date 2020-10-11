@@ -10,7 +10,11 @@ namespace web
         std::vector<std::string> resources;
         view_data.insert("title", "Home");
 
-        auto resp = drogon::HttpResponse::newHttpViewResponse("views::main", view_data);
+         drogon::app().getDbClient()->execSqlSync(
+            "insert into resource(name, data) VALUES($1, $2)", "resource_data.name", "resource_data.data");
+
+
+        auto resp = drogon::HttpResponse::newHttpViewResponse("view::main", view_data);
         callback(resp);
     }
 } // web

@@ -1,0 +1,6 @@
+<%view view::header %>
+    <%view view::menu %>
+
+    <h1>News</h1>
+
+<%view view::footer %>

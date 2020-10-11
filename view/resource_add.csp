@@ -1,5 +1,5 @@
-<%view header %>
-    <%view menu %>
+<%view view::header %>
+    <%view view::menu %>
 
     <form id="resource_add" action="/resource/add" method="post">
         <label>Name</label><input name="name" type="text">
@@ -9,4 +9,4 @@
     </form>
     <div>[[ status ]]</div>
 
-<%view footer %>
+<%view view::footer %>

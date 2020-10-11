@@ -23,7 +23,7 @@ namespace web
 
         view_data.insert("title", "Add a new resource");
         view_data.insert("status", "Resource ' " + resource_data.name + " ' has been added");
-        auto resp = drogon::HttpResponse::newHttpViewResponse("views::resource_add", view_data);
+        auto resp = drogon::HttpResponse::newHttpViewResponse("view::resource_add", view_data);
         callback(resp);
     }
 } // web

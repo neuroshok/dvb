@@ -24,9 +24,8 @@ set_target_properties(dvb PROPERTIES
 # third_party
 set(BUILD_EXAMPLES OFF)
 add_subdirectory(third_party/drogon)
+drogon_create_views(dvb ${DVB_ROOT}/view/ ${DVB_ROOT}/source/generated/view true)
 target_link_libraries(dvb PRIVATE drogon)
-drogon_create_views(dvb ${DVB_ROOT}/source/view/ ${DVB_ROOT}/generated/view true)
-
 
 # copy app data
 add_custom_command(

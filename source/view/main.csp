@@ -1,6 +1,0 @@
-<%view header %>
-    <%view menu %>
-
-    <h1>News</h1>
-
-<%view footer %>

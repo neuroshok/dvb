@@ -1,7 +1,7 @@
 <%inc #include <dvb/resource_data.hpp> %>
 
-<%view header %>
-    <%view menu %>
+<%view view::header %>
+    <%view view::menu %>
 
     <%c++
         auto resources = @@.get<std::vector<dvb::resource_data>>("resources");
@@ -15,4 +15,4 @@
     <%c++ } %>
 
     
-<%view footer %>
+<%view view::footer %>

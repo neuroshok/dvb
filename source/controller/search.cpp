@@ -33,11 +33,11 @@ namespace web
                 view_data.insert("search_input", input);
                 view_data.insert("resources", resources);
 
-                auto resp = drogon::HttpResponse::newHttpViewResponse("views::search", view_data);
+                auto resp = drogon::HttpResponse::newHttpViewResponse("view::search", view_data);
                 callback(resp);
             },
-            [](const DrogonDbException& e) {
-
+            [](const drogon::DrogonDbException& e) {
+                std::cout << e.base().what();
             },
             input);
     }
