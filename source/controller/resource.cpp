@@ -10,7 +10,7 @@ namespace web
         drogon::HttpViewData view_data;
 
         view_data.insert("title", "Add a new resource");
-        auto resp = drogon::HttpResponse::newHttpViewResponse("resource_add.csp", view_data);
+        auto resp = drogon::HttpResponse::newHttpViewResponse("view::resource_add", view_data);
         callback(resp);
     }
 

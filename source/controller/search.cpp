@@ -13,7 +13,7 @@ namespace web
         using namespace drogon::orm;
 
         drogon::app().getDbClient()->execSqlAsync(
-            "select name, data from resource where name like '%$1%'",
+            "select name, data from resource where name like $1",
             [callback, input](const Result& result)
             {
                 std::vector<dvb::resource_data> resources;
@@ -39,6 +39,6 @@ namespace web
             [](const DrogonDbException& e) {
                 std::cout << e.base().what();
             },
-            input);
+            "%" + input + "%");
     }
 } // web

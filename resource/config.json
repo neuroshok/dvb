@@ -19,12 +19,12 @@
             "cert": "cert.pem",
             "key": "privkey.pem"
         }
-        
+
     ],
 
     "db_clients":[
         {
-          "name":"",
+          "name":"default",
           "rdbms": "postgresql",
           "host": "127.0.0.1",
           "port": 5432,
