@@ -13,11 +13,6 @@ add_executable(dvb ${DVB_SOURCES})
 add_dependencies(dvb drogon_ctl)
 target_include_directories(dvb PUBLIC include)
 
-add_subdirectory(third_party/drogon)
-target_link_libraries(dvb PRIVATE drogon)
-
-drogon_create_views(dvb ${DVB_ROOT}/source/view/ ${DVB_ROOT}/generated/view true)
-
 if (NOT DVB_OUTPUT)
     set(DVB_OUTPUT ${CMAKE_BINARY_DIR}/${DVB_OUTPUT})
 endif()
@@ -30,6 +25,8 @@ set_target_properties(dvb PROPERTIES
 set(BUILD_EXAMPLES OFF)
 add_subdirectory(third_party/drogon)
 target_link_libraries(dvb PRIVATE drogon)
+drogon_create_views(dvb ${DVB_ROOT}/source/view/ ${DVB_ROOT}/generated/view true)
+
 
 # copy app data
 add_custom_command(
