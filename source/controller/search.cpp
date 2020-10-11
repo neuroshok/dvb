@@ -36,7 +36,7 @@ namespace web
                 auto resp = drogon::HttpResponse::newHttpViewResponse("view::search", view_data);
                 callback(resp);
             },
-            [](const drogon::DrogonDbException& e) {
+            [](const DrogonDbException& e) {
                 std::cout << e.base().what();
             },
             input);
