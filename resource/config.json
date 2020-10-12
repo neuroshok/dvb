@@ -35,5 +35,12 @@
           "connection_number": 1,
           "file_name": ""
         }
-      ]
+      ],
+
+      "plugins": [
+        {
+        "name": "OAuth",
+        "config": {
+        }
+        }]
 }

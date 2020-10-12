@@ -9,7 +9,7 @@
         <header>
             <nav id="connect-with">
                 <label>Connect with:</label>
-                <a href="/login/github">github</a>
+                <a href="/login/oauth/github">github</a>
                 <a href="">discord</a>
             </nav>
         </header>
