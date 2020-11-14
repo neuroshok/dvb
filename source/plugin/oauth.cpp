@@ -1,7 +1,12 @@
 #include <plugin/oauth.hpp>
 
 
-void OAuth::initAndStart(const Json::Value& config) {}
+void OAuth::initAndStart(const Json::Value& config)
+{
+    client_id_ = config.get("client_id", "").asString();
+    client_secret_ = config.get("client_secret", "").asString();
+}
+
 void OAuth::shutdown() {}
 
 void OAuth::process(std::string provider, std::function<void(const drogon::HttpResponsePtr&)> callback)
@@ -10,7 +15,7 @@ void OAuth::process(std::string provider, std::function<void(const drogon::HttpR
     auto req = drogon::HttpRequest::newHttpRequest();
     req->setMethod(drogon::Get);
     req->setPath("/login/oauth/authorize");
-    req->setParameter("client_id", "ab36f70bc522920f7800");
+    req->setParameter("client_id", client_id_);
     req->setParameter("state", "rng");
     req->setParameter("scope", "read:user");
 
@@ -27,8 +32,8 @@ void OAuth::process(std::string provider, std::string code, std::function<void(b
     req->setMethod(drogon::Get);
     req->addHeader("Accept", "application/json");
     req->setPath("/login/oauth/access_token");
-    req->setParameter("client_id", "ab36f70bc522920f7800");
-    req->setParameter("client_secret", "44e4f8139ffc83f7ece7182ef3721b0c140c6cc7");
+    req->setParameter("client_id", client_id_);
+    req->setParameter("client_secret", client_secret_);
     req->setParameter("scope", "read:user");
     req->setParameter("code", code);
 

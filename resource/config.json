@@ -40,8 +40,12 @@
       ],
 
       "plugins": [
+      {
+      "name": "OAuth",
+      "config":
         {
-        "name": "OAuth",
-        "config": {}
-        }]
+          "client_id": "",
+          "client_secret": ""
+        }
+      }]
 }
