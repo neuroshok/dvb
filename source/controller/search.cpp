@@ -2,6 +2,8 @@
 
 #include <drogon/orm/DbClient.h>
 #include <drogon/orm/Result.h>
+
+#include <dvb/view.hpp>
 #include <dvb/resource_data.hpp>
 
 namespace web
@@ -14,7 +16,7 @@ namespace web
 
         drogon::app().getDbClient()->execSqlAsync(
             "select name, data from resource where name like $1",
-            [callback, input](const Result& result)
+            [callback, &input, &req](const Result& result)
             {
                 std::vector<dvb::resource_data> resources;
                 resources.emplace_back(dvb::resource_data{ input, "type", "data" });
@@ -28,7 +30,7 @@ namespace web
 
                 }
 
-                drogon::HttpViewData view_data;
+                dvb::view view_data{ req };
                 view_data.insert("title", "Searching " + input);
                 view_data.insert("search_input", input);
                 view_data.insert("resources", resources);

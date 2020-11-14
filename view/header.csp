@@ -1,3 +1,7 @@
+<%inc #include <dvb/user.hpp> %>
+
+<%c++ const auto& user = @@.get<dvb::user>("user"); %>
+
 <!DOCTYPE html>
     <head>
         <meta charset="UTF-8">
@@ -8,9 +12,13 @@
     <body>
         <header>
             <nav id="connect-with">
-                <label>Connect with:</label>
-                <a href="/login/oauth/github">github</a>
-                <a href="">discord</a>
+                    <%c++ if (user.is_logged()) { %>
+                        <label> {% user.name() %} </label>
+                    <%c++ } else { %>
+                        <label>Connect with:</label>
+                        <a href="/login/oauth/github">github</a>
+                        <a href="">discord</a>
+                    <%c++ } %>
             </nav>
         </header>
 

@@ -3,9 +3,7 @@
 <%view view::header %>
     <%view view::menu %>
 
-    <%c++
-        auto resources = @@.get<std::vector<dvb::resource_data>>("resources");
-    %>
+    <%c++ auto resources = @@.get<std::vector<dvb::resource_data>>("resources"); %>
 
     <%c++ for(const auto& resource : resources) { %>
         <div>

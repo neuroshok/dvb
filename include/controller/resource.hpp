@@ -18,7 +18,7 @@ namespace web
         METHOD_LIST_END
 
         void view_add(const drogon::HttpRequestPtr&, std::function<void (const drogon::HttpResponsePtr&)>&&) const;
-        void add(dvb::resource_data&&, std::function<void(const drogon::HttpResponsePtr&)>&&) const;
+        void add(const drogon::HttpRequestPtr&, std::function<void(const drogon::HttpResponsePtr&)>&&, dvb::resource_data&& resource_data) const;
     };
 } // web
 

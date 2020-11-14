@@ -1,22 +1,24 @@
 #include <controller/resource.hpp>
 
 #include <drogon/orm/DbClient.h>
+
 #include <dvb/resource_data.hpp>
+#include <dvb/view.hpp>
 
 namespace web
 {
     void resource::view_add(const drogon::HttpRequestPtr& req, std::function<void (const drogon::HttpResponsePtr &)>&& callback) const
     {
-        drogon::HttpViewData view_data;
+        dvb::view view_data{ req };
 
         view_data.insert("title", "Add a new resource");
         auto resp = drogon::HttpResponse::newHttpViewResponse("view::resource_add", view_data);
         callback(resp);
     }
 
-    void resource::add(dvb::resource_data&& resource_data, std::function<void(const drogon::HttpResponsePtr &)>&& callback) const
+    void resource::add(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr &)>&& callback, dvb::resource_data&& resource_data) const
     {
-        drogon::HttpViewData view_data;
+        dvb::view view_data{ req };
 
         drogon::app().getDbClient()->execSqlSync(
             "insert into resource(name, data) VALUES($1, $2)", resource_data.name, resource_data.data);

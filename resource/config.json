@@ -3,7 +3,9 @@
     {
         "document_root": "./app",
         "run_as_daemon": false,
-        "relaunch_on_error": true
+        "relaunch_on_error": true,
+        "enable_session": true,
+        "session_timeout": 1200
     },
 
     "listeners": [
@@ -40,7 +42,6 @@
       "plugins": [
         {
         "name": "OAuth",
-        "config": {
-        }
+        "config": {}
         }]
 }

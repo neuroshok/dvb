@@ -1,19 +1,33 @@
 #include <controller/login.hpp>
-#include <oauth.hpp>
+
+#include <dvb/error.hpp>
+#include <dvb/user.hpp>
+#include <plugin/oauth.hpp>
 
 namespace web
 {
-    void login::process(const drogon::HttpRequestPtr& req,
-            std::function<void(const drogon::HttpResponsePtr&)>&& callback
-            std::string oauth_provider)
+    void login::process(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback
+                        , std::string&& provider)
     {
-        drogon::app().getPlugin<OAuth>().process(oauth_service, [callback]()
+        drogon::app().getPlugin<OAuth>()->process(provider, callback);
+    }
+
+    void login::process_auth(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback
+                            , std::string&& provider, std::string&& code, std::string&& state)
+    {
+        drogon::app().getPlugin<OAuth>()->process(provider, code, [callback, &req](bool success, const drogon::HttpResponsePtr& response)
         {
-            std::cout << "login cb";
-            drogon::HttpViewData view_data;
-            view_data.insert("title", "Auth");
-            auto resp = drogon::HttpResponse::newHttpViewResponse("view::main", view_data);
-            callback(resp);
+            if (success)
+            {
+                auto user_name = response->jsonObject()->get("login", "").asString();
+                dvb::user user{ user_name };
+                user.connect();
+                req->session()->insert("user", std::move(user));
+                auto response = drogon::HttpResponse::newHttpResponse();
+                response->setStatusCode(drogon::HttpStatusCode::k303SeeOther);
+                response->addHeader("Location", "/");
+                callback(response);
+            }
         });
     }
 } // web
