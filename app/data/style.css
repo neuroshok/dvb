@@ -28,7 +28,13 @@ a
     text-decoration: none;
 }
 
-#connect-with
+#avatar
+{
+    max-height: 32px;
+    max-width: 32px;
+}
+
+#login-with
 {
     height: 24px;
     line-height: 24px;
@@ -37,7 +43,7 @@ a
     text-align: right;
     padding-right: 12px;
 }
-#connect-with a
+#login-with a
 {
     color: #AAAAAA;
 }

@@ -15,12 +15,14 @@ namespace web
     void login::process_auth(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback
                             , std::string&& provider, std::string&& code, std::string&& state)
     {
-        drogon::app().getPlugin<OAuth>()->process(provider, code, [callback, &req](bool success, const drogon::HttpResponsePtr& response)
+        drogon::app().getPlugin<OAuth>()->process(provider, code, [callback, &req](bool success, const drogon::HttpResponsePtr& oauth_response)
         {
             if (success)
             {
-                auto user_name = response->jsonObject()->get("login", "").asString();
+                auto user_name = oauth_response->jsonObject()->get("login", "").asString();
+                auto avatar_url = oauth_response->jsonObject()->get("avatar_url", "").asString();
                 dvb::user user{ user_name };
+                user.set_avatar_url(avatar_url);
                 user.connect();
                 req->session()->insert("user", std::move(user));
                 auto response = drogon::HttpResponse::newHttpResponse();

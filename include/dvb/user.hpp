@@ -8,7 +8,7 @@ namespace dvb
     class user
     {
     public:
-        user(std::string name = "anonymous")
+        explicit user(std::string name = "anonymous")
             : name_{ std::move(name) }
             , logged_{ false }
         {}
@@ -19,11 +19,15 @@ namespace dvb
             return true;
         }
 
+        void set_avatar_url(std::string avatar_url) { avatar_url_ = std::move(avatar_url); }
+
         const std::string& name() const { return name_; }
+        const std::string& avatar_url() const { return avatar_url_; }
         bool is_logged() const { return logged_; }
 
     private:
         std::string name_;
+        std::string avatar_url_;
         bool logged_;
     };
 } // dvb
