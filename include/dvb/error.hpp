@@ -2,16 +2,18 @@
 #define INCLUDE_DVB_ERROR_HPP_DVB
 
 #include <drogon/HttpResponse.h>
+#include <string>
 
 namespace dvb
 {
-    void error(std::function<void(const drogon::HttpResponsePtr&)>&& callback)
+    enum class errc
     {
-        drogon::HttpViewData view_data;
+        authentication_required
+    };
 
-
-        //callback();
-    }
+    void error(std::function<void(const drogon::HttpResponsePtr&)> callback, errc code);
+    void error(std::function<void(const drogon::HttpResponsePtr&)> callback, std::string message);
+    void error404(std::function<void(const drogon::HttpResponsePtr&)> callback);
 } // dvb
 
 #endif // INCLUDE_DVB_ERROR_HPP_DVB

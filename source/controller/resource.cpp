@@ -4,11 +4,14 @@
 
 #include <dvb/resource_data.hpp>
 #include <dvb/view.hpp>
+#include <dvb/error.hpp>
 
 namespace web
 {
     void resource::view_add(const drogon::HttpRequestPtr& req, std::function<void (const drogon::HttpResponsePtr &)>&& callback) const
     {
+        if (!dvb::user::is_logged(req)) return dvb::error(callback, dvb::errc::authentication_required);
+
         dvb::view view_data{ req };
 
         view_data.insert("title", "Add a new resource");
@@ -18,6 +21,8 @@ namespace web
 
     void resource::add(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr &)>&& callback, dvb::resource_data&& resource_data) const
     {
+        if (!dvb::user::is_logged(req)) return dvb::error(callback, dvb::errc::authentication_required);
+
         dvb::view view_data{ req };
 
         drogon::app().getDbClient()->execSqlSync(

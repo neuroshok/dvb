@@ -1,6 +1,7 @@
 #ifndef INCLUDE_DVB_USER_HPP_DVB
 #define INCLUDE_DVB_USER_HPP_DVB
 
+#include <drogon/HttpRequest.h>
 #include <string>
 
 namespace dvb
@@ -13,17 +14,27 @@ namespace dvb
             , logged_{ false }
         {}
 
-        bool connect()
-        {
-            logged_ = true;
-            return true;
-        }
+        void login() { logged_ = true; }
+
+        void logout() { logged_ = false; }
 
         void set_avatar_url(std::string avatar_url) { avatar_url_ = std::move(avatar_url); }
 
         const std::string& name() const { return name_; }
         const std::string& avatar_url() const { return avatar_url_; }
         bool is_logged() const { return logged_; }
+
+        static bool is_logged(const drogon::HttpRequestPtr& req)
+        {
+            if (req->session()->find("user") && req->session()->getRef<dvb::user>("user").is_logged()) return true;
+            return false;
+        }
+
+        static dvb::user& get(const drogon::HttpRequestPtr& req)
+        {
+            if (!req->session()->find("user")) throw std::logic_error("session not found");
+            return req->session()->getRef<dvb::user>("user");
+        }
 
     private:
         std::string name_;

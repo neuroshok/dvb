@@ -12,7 +12,7 @@ public:
     void shutdown() override;
 
     void process(std::string provider, std::function<void(const drogon::HttpResponsePtr&)> callback);
-    void process(std::string provider, std::string code, std::function<void(bool, const drogon::HttpResponsePtr&)> callback);
+    void process(std::string provider, std::string code, std::function<void(bool, std::string, const drogon::HttpResponsePtr&)> callback);
 
 private:
     std::string client_id_;

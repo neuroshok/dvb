@@ -44,8 +44,8 @@
       "name": "OAuth",
       "config":
         {
-          "client_id": "",
-          "client_secret": ""
+          "client_id": "ab36f70bc522920f7800",
+          "client_secret": "a2e9fafab40bbcdb77323a958b8eb5b50c8091ff"
         }
       }]
 }

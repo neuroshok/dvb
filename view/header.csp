@@ -11,13 +11,18 @@
 
     <body>
         <header>
-            <nav id="connect-with">
+            <nav id="login-with">
                     <%c++ if (user.is_logged()) { %>
-                        <label> {% user.name() %} </label>
+                        <ul>
+                            <li><img width="24" height="24" id = "avatar" src = "{% user.avatar_url() %}" alt = "" /></li>
+                            <li><strong> {% user.name() %} </strong></li>
+                            <li><a href="/resource/add">Add resource</a></li>
+                            <li><a href="/resource/add">Add category</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
                     <%c++ } else { %>
-                        <label>Connect with:</label>
+                        <label>Log in with</label>
                         <a href="/login/oauth/github">github</a>
-                        <a href="">discord</a>
                     <%c++ } %>
             </nav>
         </header>

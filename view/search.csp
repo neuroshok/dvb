@@ -8,9 +8,8 @@
     <%c++ for(const auto& resource : resources) { %>
         <div>
             <h1>{% resource.name %}</h1>
-            {% resource.data %}
+            <div>{% resource.data %}</div>
         </div>
     <%c++ } %>
-
     
 <%view view::footer %>

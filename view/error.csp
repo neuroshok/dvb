@@ -1,0 +1,5 @@
+<%view view::header %>
+
+    <h1>Authentication required</h1>
+
+<%view view::footer %>

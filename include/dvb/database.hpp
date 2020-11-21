@@ -3,23 +3,31 @@
 
 namespace dvb::database
 {
-    enum class entity_type { user, organisation };
-    enum class resource_type { article, course };
-    enum class resource_format { text, image, video };
-    enum class resource_location { local, remote };
-
     static constexpr auto table_system = R"(
     create table if not exists system(
         version varchar(24) not null
+    );)";
+
+    static constexpr auto table_tag = R"(
+    create table if not exists tag(
+        id serial primary key,
+        owner_id integer,
+        name varchar(255),
+        format integer,
+        location integer,
+        data text
     );)";
 
     static constexpr auto table_resource = R"(
     create table if not exists resource(
         id serial primary key,
         owner_id integer,
+        name varchar(255),
+        description varchar(255),
+        tag integer,
         format integer,
         location integer,
-        content text
+        data text
     );)";
 
     static constexpr auto table_entity = R"(

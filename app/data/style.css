@@ -30,29 +30,41 @@ a
 
 #avatar
 {
-    max-height: 32px;
-    max-width: 32px;
+    max-height: 24px;
+    max-width: 24px;
 }
 
 #login-with
 {
     height: 24px;
+    width: 100%;
     line-height: 24px;
-    background-color: #000000;
-    color: #AAAAAA;
-    text-align: right;
-    padding-right: 12px;
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 4px;
+    box-sizing: border-box;
 }
+
 #login-with a
 {
-    color: #AAAAAA;
+    color: #1382CE;
+}
+#login-with > ul > li, #login-with > ul > li a
+{
+    display: table-cell;
+    vertical-align: middle;
+    border-spacing: 5px 0px;
 }
 
 header
 {
-    background-color: red;
-    height: 120px;
-    margin-bottom: 5px;
+    background: url(background.jpg);
+    background-size: 1080px 120px;
+    background-position: center;
+    background-position: top 24px;
+    background-repeat: no-repeat;
+    height: 144px;
+    width: 100%;
 }
 
 #search
@@ -61,6 +73,7 @@ header
 
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 4px;
     width: 30%;
 }
 
@@ -98,7 +111,7 @@ header
     display: flex;
     flex-direction: column;
     background-color: #DDDDDD;
-    flex-grow: 1;
+    flex: 20%;
 }
 
 #menu h1
@@ -124,18 +137,21 @@ header
 {
     display: flex;
     flex-direction: column;
-    flex-grow: 8;
-    padding: 4px;
+    flex: 80%;
+    padding-left: 4px;
 }
 
-#content div
-{
-    background-color: #AAAAAA;
-    margin-bottom: 10px;
-}
+
 #content div h1
 {
-    background-color: blue;
+    background-color: #3295c8;
+}
+
+#content div > div
+{
+    background-color: #EEEEEE;
+    margin-bottom: 10px;
+    padding: 4px;
 }
 
 #resource_add label

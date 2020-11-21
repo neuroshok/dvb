@@ -7,7 +7,8 @@ set(DVB_ROOT ${CMAKE_SOURCE_DIR})
 
 file(GLOB_RECURSE DVB_SOURCES
         "source/*.cpp"
-        "include/*.hpp")
+        "include/*.hpp"
+        "app/data/style.css")
 
 add_executable(dvb ${DVB_SOURCES})
 add_dependencies(dvb drogon_ctl)
