@@ -6,10 +6,13 @@
     <%c++ auto resources = @@.get<std::vector<dvb::resource_data>>("resources"); %>
 
     <%c++ for(const auto& resource : resources) { %>
+    <%c++ std::string data = resource.data; %>
+    <%c++ if (resource.data.substr(0, 4) == "http") data = "<a href = '"+ resource.data +"'>" + resource.data + "</a>"; %>
+    <%c++ std::string resource_type = dvb::to_string(resource.type); %>
         <div>
-            <h1>{% resource.name %}</h1>
-            <div>{% resource.data %}</div>
+            <h1>{% resource_type %} - {% resource.name %} <a href="/r/{% resource.shortname %}" style="color:#444444;">[{% resource.shortname %}]</span></h1>
+            <div>{% data %}</div>
         </div>
     <%c++ } %>
-    
+
 <%view view::footer %>

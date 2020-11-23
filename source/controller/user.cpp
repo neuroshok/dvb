@@ -29,12 +29,13 @@ namespace web
         {
             if (success)
             {
+                auto user_id = oauth_response->jsonObject()->get("id", 0).asUInt64();
                 auto user_name = oauth_response->jsonObject()->get("login", "").asString();
                 auto avatar_url = oauth_response->jsonObject()->get("avatar_url", "").asString();
 
                 if (!req->session()->find("user"))
                 {
-                    dvb::user user{ user_name };
+                    dvb::user user{ user_id, user_name };
                     user.set_avatar_url(avatar_url);
                     user.login();
                     req->session()->insert("user", std::move(user));

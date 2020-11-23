@@ -24,7 +24,7 @@ input[type="submit"]
 
 a 
 {
-    color: #000000;
+    color: #1382CE;
     text-decoration: none;
 }
 
@@ -45,10 +45,6 @@ a
     box-sizing: border-box;
 }
 
-#login-with a
-{
-    color: #1382CE;
-}
 #login-with > ul > li, #login-with > ul > li a
 {
     display: table-cell;
@@ -145,6 +141,7 @@ header
 #content div h1
 {
     background-color: #3295c8;
+    padding: 4px;
 }
 
 #content div > div
@@ -165,6 +162,11 @@ header
 {
     width: 50%;
     margin-bottom: 4px;
+}
+
+#resource_add .row > *
+{
+    display: inline-block;
 }
 
 footer

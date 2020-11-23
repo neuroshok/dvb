@@ -15,19 +15,16 @@ namespace web
         using namespace drogon::orm;
 
         drogon::app().getDbClient()->execSqlAsync(
-            "select name, data from resource where name like $1",
+            "select * from resource where lower(name) like lower($1) LIMIT 100",
             [callback, &input, &req](const Result& result)
             {
                 std::vector<dvb::resource_data> resources;
-                resources.emplace_back(dvb::resource_data{ input, "type", "data" });
 
                 for (auto row : result)
                 {
-                    resources.emplace_back(dvb::resource_data{ 
-                        row["name"].as<std::string>(), 
-                        "type", 
-                        row["data"].as<std::string>() });
+                    dvb::resource_data::from_row(row);
 
+                    resources.emplace_back(dvb::resource_data::from_row(row));
                 }
 
                 dvb::view view_data{ req };

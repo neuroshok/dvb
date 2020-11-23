@@ -23,11 +23,13 @@ namespace dvb
     {
         drogon::app().registerBeginningAdvice([this]()
         {
+            //drogon::app().getDbClient()->execSqlSync("drop table if exists system");
+
             drogon::app().getDbClient()->execSqlSync(dvb::database::table_system);
 
             bool update_required = false;
             auto result = drogon::app().getDbClient()->execSqlSync("select version from system");
-            if (result.size())
+            if (!result.empty())
             {
                 auto db_version = result[0]["version"].as<std::string>();
                 if (db_version != version()) update_database(db_version, version());
@@ -39,8 +41,8 @@ namespace dvb
     void application::make_database() const
     {
         LOG_INFO << "make database";
-        //drogon::app().getDbClient()->execSqlSync("drop table if exists entity");
-        //drogon::app().getDbClient()->execSqlSync("drop table if exists resource");
+        drogon::app().getDbClient()->execSqlSync("drop table if exists entity");
+        drogon::app().getDbClient()->execSqlSync("drop table if exists resource");
 
         drogon::app().getDbClient()->execSqlSync("insert into system(version) values($1)", version_);
 

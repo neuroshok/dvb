@@ -6,17 +6,28 @@
 
     <form id="resource_add" action="/resource/add" method="post">
         <label>Name</label><input name="name" type="text">
-        <label>Type</label>
-        <select id="type">
-            <option value="{% std::to_string((int)dvb::resource_type::article) %}">Article</option>
-            <option value="{% std::to_string((int)dvb::resource_type::course) %}">Course</option>
-            <option value="{% std::to_string((int)dvb::resource_type::library) %}">Library</option>
-        </select>
-        <select id="format">
-            <option value="{% std::to_string((int)dvb::resource_format::text) %}">Text</option>
-            <option value="{% std::to_string((int)dvb::resource_format::image) %}">Image</option>
-            <option value="{% std::to_string((int)dvb::resource_format::video) %}">Video</option>
-        </select>
+        <label>Short name</label><input name="shortname" type="text">
+
+        <div class="row">
+            <label>Type</label>
+            <select name="type">
+                <option value="{% std::to_string((int)dvb::resource_type::article) %}">Article</option>
+                <option value="{% std::to_string((int)dvb::resource_type::community) %}">Community</option>
+                <option value="{% std::to_string((int)dvb::resource_type::course) %}">Course</option>
+                <option value="{% std::to_string((int)dvb::resource_type::project) %}">Project</option>
+                <option selected="selected" value="{% std::to_string((int)dvb::resource_type::other) %}">Other</option>
+            </select>
+
+            <label>Format</label>
+            <select name="format">
+                <option value="{% std::to_string((int)dvb::resource_format::text) %}">Text</option>
+                <option value="{% std::to_string((int)dvb::resource_format::image) %}">Image</option>
+                <option value="{% std::to_string((int)dvb::resource_format::video) %}">Video</option>
+            </select>
+        </div>
+
+        <label>Tags</label><input name="tags" type="text" placeholder="tag1 tag2 tag3 ...">
+        <label>Author</label><input name="author" type="text" value="anonymous">
 
         <label>Data</label><textarea name="data"></textarea>
         <br><input type="submit" value="Add">

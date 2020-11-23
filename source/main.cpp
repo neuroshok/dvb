@@ -8,7 +8,3 @@ int main()
 
     return 0;
 }
-
-//domain/security language/cpp library
-
-/discord/cpp

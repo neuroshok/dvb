@@ -1,4 +1,5 @@
 <div id="middle">
+<!--
     <nav id="menu">
         <section>
             <h1>Language</h1>
@@ -16,10 +17,10 @@
         <section>
             <h1>Learn</h1>
             <section>
-                <a href="/search/course/cpp">Learn cpp</a>
+                <a href="/search/cpp">Learn cpp</a>
                 <a href="/search/vulkan">vulkan</a>
             </section>
         </section>
     </nav>
-
+-->
     <section id="content">
